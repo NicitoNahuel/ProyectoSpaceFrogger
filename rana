@@ -1,0 +1,74 @@
+#include <conio.h>
+#include <iostream>
+#include <windows.h>
+int i=14, j=7; //para definir la posicion del personaje, el personaje empieza en el medio de la pantalla en la parte inferior, por lo tanto i=14 j=7
+int movimiento()  //me falta que se imprima la rana (que se mueva) cuando tocas, osea integrar la funcion "imprimir_rana"
+{
+    //para moverlo voy a sumar 1 en la direccion en la que se desea mover, por ejemplo si esta en 0 0 y me quiero mover para abajo le sumaria 1 a j y quedaria 1 0
+    // w arriba || s abajo || d derecha || a izquierda
+    char mover; //la direccion en la que se mueve
+    int rana[14][14] //la posicion del personaje
+    
+
+    while (1) {
+        if ( _kbhit() ) // lee caracter sin scanf 
+        {  
+        mover=_getch(); // guarda la tecla que se esta tocando
+        
+        if (mover=='w' && j!=0) //compara la tecla presionada con las 4 direcciones valida
+            {
+            j=+1;
+            system("CLS"); //limpia la pantalla (hay una funcion con <windows.h> que hace que no titilee pero lo tengo que investigar)
+            //aca se va a usar la funcion de dibujar el sapo cuando la haga
+            }
+        //se repite lo de arriba para cada direccion
+
+        if (mover=='s' && j!=14)
+            {
+            j=-1;
+            }
+
+        if (mover=='d' && i!=14)
+            {
+            i=-1;
+            }
+        if (mover=='a' && i!=0)
+            {
+            i=+1;    
+            }
+        }
+    }
+    return 0;
+}
+
+int imprimir_rana ()
+//me falta poner en que lugar se imprime la rana (posicion en el mapa, i j)
+{
+    system("color 0A");	/// para colocar el color cambiando fondo y letras
+    while (1)
+    {
+        if (_getch() = 'w')
+        {
+            printf ("%c", 30); //"la rana" (va a ser una flecha en  direccion en la que esta mirando "la rana") 
+            system("CLS");
+        }
+
+        if (_getch() = 's')
+        {
+            printf ("%c", 31); //"la rana" (va a ser una flecha en  direccion en la que esta mirando "la rana") 
+            system("CLS");
+        }
+
+        if (_getch() = 'a')
+        {
+            printf ("%c", 17); //"la rana" (va a ser una flecha en  direccion en la que esta mirando "la rana") 
+            system("CLS");
+        }
+
+        if (_getch() = 'd')
+        {
+            printf ("%c", 16); //"la rana" (va a ser una flecha en  direccion en la que esta mirando "la rana") 
+            system("CLS");
+        }
+    }
+}
