@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <ncurses.h>
+
+int main() {
+    int puntuacion = 0;
+
+    // Inicializa la biblioteca ncurses
+    initscr();
+    cbreak();
+    noecho();
+    keypad(stdscr, TRUE);
+
+    // Crea una nueva ventana para mostrar la puntuación
+    WINDOW *ventana_puntuacion = newwin(1, 20, 0, 0);
+
+    while (1) {
+        // Actualiza la ventana de puntuación
+        werase(ventana_puntuacion);
+        mvwprintw(ventana_puntuacion, 0, 0, "Puntuacion: %d", puntuacion);
+        wrefresh(ventana_puntuacion);
+
+        // Lógica de juego...
+        // Aquí puedes colocar el código para actualizar la puntuación según las condiciones previamente establecidas.
+
+        // Ejemplo: Incrementa la puntuación en 10 cada segundo
+        puntuacion += 10;
+        usleep(1000000);  // Espera 1 segundo
+
+        // Sal del bucle si se cumple alguna condición de finalización del juego
+        // ...
+
+        // Si se presiona la tecla 'q', sale del bucle
+        if (getch() == 'q')
+            break;
+    }
+
+    // Finaliza la biblioteca ncurses
+    endwin();
+
+    return 0;
+}
