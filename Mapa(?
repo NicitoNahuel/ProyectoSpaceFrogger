@@ -25,8 +25,9 @@ int linea8[15]{178,178,178,178,178,178,175,178,178,178,175,178,178,178,175};
 int linea9[15]{174,178,178,178,174,178,178,178,174,178,178,178,178,178,178};
 int linea10[15]{175,178,178,178,175,178,178,178,175,178,178,178,178,178,178};
 
-//Safepoint
+//Intermedio y arranque
 int sf1[15]{219,219,219,219,219,219,219,219,219,219,219,219,219,219,219};
+//Meta
 int sf2[15]{219,219,223,219,223,219,223,219,223,219,223,219,223,219,219};
 
 main()
@@ -34,30 +35,30 @@ main()
 	HANDLE lol;
 	lol =  GetStdHandle(STD_OUTPUT_HANDLE);
 	
-	//actualizar pantalla
 	while(1)
 	{
 		for(i=0;i<15;i++)
 		{
-			color(lol,2);
-			printf("%c", sf2[i]);
+			color(lol,2); //Cambiar color
+			printf("%c", sf2[i]); //Imprimir Meta
 		}
 		printf("\n");
-		//Imprimir lineas
+		
+		//Imprimir otras lineas
 		for(i=0;i<15;i++)
 		{
 			
 			if(linea1[i]==254)
 			{
-				color(lol,6);
+				color(lol,6); //Cambiar el color si es obstaculo
 			}
 			else if(linea1[i] == 176)
 			{
-				color(lol,3);
+				color(lol,3); //Cambiar el color si es suelo
 			}
-			printf("%c", linea1[i]);
+			printf("%c", linea1[i]); //Imprimir linea
 		}
-		printf("\n");
+		printf("\n"); //Salto
 		for(i=0;i<15;i++)
 		{
 			if(linea2[i]==254)
@@ -114,8 +115,8 @@ main()
 		
 		for(i=0;i<15;i++)
 		{
-			color(lol,2);
-			printf("%c", sf1[i]);
+			color(lol,2); //Color del intermedio
+			printf("%c", sf1[i]); //Imprimir intermedio
 		}
 		
 		printf("\n");
@@ -197,11 +198,11 @@ main()
 		
 		for(i=0;i<15;i++)
 		{
-			color(lol,2);
-			printf("%c", sf1[i]);
+			color(lol,2); //Color de la zona de inicio
+			printf("%c", sf1[i]); //Imprimir zona de inicio
 		}		
-		//actualizar lineas una posicion hacia el lado
-		for(p=0;p<15;p++)
+	
+		for(p=0;p<15;p++)	//actualizar lineas una posicion hacia la derecha
 		{
 			if(p==0)
 			{
@@ -219,7 +220,7 @@ main()
 			linea9[p] = linea9[p+1];
 		}
 		
-		for(q=14;q>=0;q--)
+		for(q=14;q>=0;q--) //actualizar lineas una posicion a la izquierda
 		{
 	
 			linea2[q+1] = linea2[q];			
@@ -239,7 +240,7 @@ main()
 		}
 		
 
-		//Reiniciar
+		//Limpiar pantalla
 		sleep(1);
 		system("CLS");
 	}
