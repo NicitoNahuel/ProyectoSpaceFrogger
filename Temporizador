@@ -16,7 +16,7 @@ void mostrarBarra(int progreso) {
     fflush(stdout);
 }
 
-int main() {
+int timer() {
     int tiempo_restante = 30; // Duración del temporizador en segundos
 
     while (tiempo_restante > 0) {
