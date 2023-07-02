@@ -1,16 +1,17 @@
 #include <iostream>
 #include <windows.h>
 #include <unistd.h>
-#include "mapa.h"
-#include "temporizador.h"
+#include "mapita.h"
+#include "ranita.h"
 
 void actualizarJuego() {
-    mapa();
-    printf("\n\n");
-    actualizarTemporizador();
-    // Limpiar pantalla
-    sleep(1);
-    system("CLS");
+    while (1){
+        ultra();
+        dibujar();
+        // Limpiar pantalla
+        sleep(1);
+        system("CLS");
+    }
 }
 
 int main(int argc, char** argv) {
