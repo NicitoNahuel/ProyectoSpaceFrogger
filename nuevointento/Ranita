@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <conio.h>
+#include <iostream>
+#include <windows.h>
+//para definir la posicion del personaje, el personaje empieza en el medio de la pantalla en la parte inferior, por lo tanto i=14 j=7
+//me falta poner en que lugar se imprime la rana (posicion en el mapa, i j)
+
+/*
+        	matriz[0][i] = sf2[i]; //meta
+            matriz[1][i] = linea1[i]; //troncos
+            matriz[2][i] = linea2[i];//troncos
+            matriz[3][i] = linea3[i];//troncos
+            matriz[4][i] = linea4[i];//troncos
+            matriz[5][i] = linea5[i];//troncos
+            matriz[6][i] = sf1[i]; //linea del medio
+            matriz[7][i] = linea6[(i + pos6) % 15]; //autos
+            matriz[8][i] = linea7[(i + pos7) % 15]; //autos
+            matriz[9][i] = linea8[(i + pos8) % 15];//autos
+            matriz[10][i] = linea9[(i + pos9) % 15];//autos
+            matriz[11][i] = linea10[(i + pos10) % 15];//autos
+            matriz[12][i] = sf1[i]; //inicio
+*/
+
+//176 es el piso
+
+void dibujar() { //dibuja al sapo dentro del mapa (reemplaza el escenario por el sapo)
+	int i, j;
+	int  matriz[13][15];
+	char movimiento;
+    matriz[12][7]=30;
+    while (1){
+	
+	system("color 0A");	/// para colocar el color cambiando fondo y letras 
+    	movimiento=_getch();
+        if (movimiento == 'w')
+        {
+            system("CLS");
+            matriz[i][j]=30; //"la rana" se mueve hacia arriba (va a ser una flecha en  direccion en la que esta mirando "la rana") 
+            printf ("%c", matriz[i][j]);
+        }
+
+        if (movimiento == 's')
+        {
+            system("CLS");
+            matriz[i][j]=31; //"la rana" se mueve hacia abajo
+            printf ("%c", matriz[i][j]);
+        }
+
+        if (movimiento == 'a')
+        {
+            system("CLS");
+            matriz[i][j]=17; //"la rana" se mueve hacia la izquierda
+            printf ("%c", matriz[i][j]);
+        }
+
+        if (movimiento == 'd')
+        {
+            system("CLS");
+            matriz[i][j]=16; //"la rana" se mueve hacia la izquierda
+            printf ("%c", matriz[i][j]);
+        }
+}
+}
