@@ -14,6 +14,7 @@ int x = 12, y = 7;
 int si = 30;
 int vida;
 int meta;
+int puntuacion=0;
 
 // Meteoritos
 int linea1[15] = {254, 254, 254, 176, 176, 176, 254, 254, 254, 176, 176, 254, 254, 176, 176};
@@ -91,16 +92,12 @@ void ultra() {
             }
             printf("\n");
         }
-
+		
+		printf ("PUNTUACION: %d", puntuacion); //muestra la puntuacion debajo del mapa
+		
         Sleep(400);
 
         system("cls");
-        
-        		
-		if (matriz[x] < matriz[i] && matriz[y] < matriz[j] && matriz[x] > matriz[i] && matriz[y] > matriz[j])
-        { 
-        x=12, y=7;
-        }    // Hay colisión 
 
         //Mover la rana
         if ((GetAsyncKeyState(VK_UP)& 1) || (GetAsyncKeyState(0x57)& 1)) //Arriba
@@ -108,6 +105,7 @@ void ultra() {
             if (x>0)
             {x--;}
             si = 30; //"la rana" se mueve hacia arriba (va a ser una flecha en  direccion en la que esta mirando "la rana")
+            puntuacion=+10; //cuando avanza suma 10 puntos
         }
 
         if ((GetAsyncKeyState(VK_DOWN) & 1) || (GetAsyncKeyState(0x53) & 1)) //Abajo
@@ -115,6 +113,7 @@ void ultra() {
             if (x<12)
             {x++;}
             si = 31; //"la rana" se mueve hacia abajo
+            puntuacion=-10; //cuando retrocede le resta 10 puntos
         }
 
         if ((GetAsyncKeyState(VK_LEFT)& 1) || (GetAsyncKeyState(0x41)& 1)) //Izquierda
@@ -144,6 +143,12 @@ void ultra() {
 		x=12, y=7;
 		}
 		*/
+		
+		if (x==0) //cuando llega a la meta le suma mil puntos "por ganar" y lo devuelve al inicio
+		{
+			puntuacion=+1000;
+			x=12, y=7;
+		}
        
        
         pos6++;
