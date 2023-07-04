@@ -8,35 +8,38 @@
 #define color SetConsoleTextAttribute
 using namespace std;
 
-int matriz[13][15];
+int matriz[13][15], posRana[13][15];
 int i, j, p, q, n;
-int x = 12, y = 7;
+int x, y;
 int si = 30;
-int vida;
+int Vidas;
 int meta;
 int puntuacion=0;
-
+bool partidaTerminada;
 // Meteoritos
-int linea1[15] = {254, 254, 254, 176, 176, 176, 254, 254, 254, 176, 176, 254, 254, 176, 176};
+int linea1[15] = {254, 254, 254, 176, 176, 176, 254, 254, 254, 176, 176, 254, 254, 176, 176}; //176= agua / 254 = tronco
 int linea2[15] = {254, 254, 176, 176, 176, 176, 254, 254, 176, 176, 176, 254, 254, 176, 176};
 int linea3[15] = {176, 254, 254, 254, 176, 176, 254, 254, 254, 176, 176, 176, 254, 254, 176};
 int linea4[15] = {176, 176, 254, 254, 176, 254, 254, 254, 176, 176, 176, 254, 254, 176, 176};
 int linea5[15] = {254, 176, 176, 176, 176, 254, 254, 254, 254, 176, 176, 176, 254, 254, 254};
 
-int linea6[15] = {178, 178, 178, 178, 178, 178, 175, 175, 178, 178, 178, 178, 178, 175, 175};
+int linea6[15] = {178, 178, 178, 178, 178, 178, 175, 175, 178, 178, 178, 178, 178, 175, 175}; //178= carretera / 175 = autos
 int linea7[15] = {178, 178, 178, 178, 178, 178, 174, 178, 178, 178, 178, 178, 178, 178, 178};
 int linea8[15] = {178, 178, 178, 178, 178, 178, 175, 178, 178, 178, 175, 178, 178, 178, 175};
 int linea9[15] = {174, 178, 178, 178, 174, 178, 178, 178, 174, 178, 178, 178, 178, 178, 178};
 int linea10[15] = {175, 178, 178, 178, 175, 178, 178, 178, 175, 178, 178, 178, 178, 178, 178};
 
 // Intermedio y arranque
-int sf1[15] = {219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219};
+int sf1[15] = {219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219}; //219= pasto
 
 // Meta
-int sf2[15] = {219, 219, 223, 219, 223, 219, 223, 219, 223, 219, 223, 219, 223, 219, 219};
+int sf2[15] = {219, 219, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 219, 219}; //223= meta
 
 void ultra() {
-
+	partidaTerminada=false;
+	x = 12; y = 7;
+	Vidas=3;
+		
     HANDLE lol;
     lol = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -46,7 +49,25 @@ void ultra() {
     int pos9 = 0;
     int pos10 = 0;
    
-    while (1){
+	
+	while (partidaTerminada == false)
+		{
+		if(matriz[x][y] == 176 || matriz[x][y] == 175)
+		{
+        	Sleep(500);
+        	Vidas=Vidas-1;
+        	x=12; y=7;
+        	if (Vidas==0)
+        	{
+			partidaTerminada=true;
+			system("CLS");
+			printf("\n GAME OVER\n Tu puntuacion final es de: %d", puntuacion);
+        	sleep(2.5);
+        	system("CLS");
+        	break;
+			}
+		}
+		system("CLS");
 
         // Copiar los vectores a la matriz
         for (i = 0; i < 15; i++) {
@@ -66,11 +87,12 @@ void ultra() {
         }
        
         //Define la posicion de la rana
-        matriz[x][y] = si;
+        posRana[x][y] = si;
        
         // Imprimir la matriz
         for (i = 0; i < 13; i++) {
             for (j = 0; j < 15; j++) {
+            	
                 if (matriz[i][j] == 254) {
                     color(lol, 6);
                 } else if (matriz[i][j] == 176) {
@@ -85,19 +107,26 @@ void ultra() {
                     color(lol, 2);
                 } else if (matriz[i][j] == 223) {
                     color(lol, 2);
-                } else if( matriz[i][j] == 30 || matriz[i][j] == 31 || matriz[i][j] == 16 || matriz[i][j] == 17 ){
-                color(lol, 10);
-}
-                printf("%c", matriz[i][j]);
+                }
+                
+                if(i == x && j == y){ 
+                	if(matriz[x][y] == 176 || matriz[x][y] == 175){
+                		color(lol, 12);
+					}else{
+						color(lol, 10);
+					}
+                	printf("%c", posRana[i][j]);
+				}else{
+					printf("%c", matriz[i][j]);
+				}
+                
             }
             printf("\n");
         }
 		
-		printf ("PUNTUACION: %d", puntuacion); //muestra la puntuacion debajo del mapa
-		
+		printf ("PUNTUACION: %d \n", puntuacion); //muestra la puntuacion debajo del mapa
+		printf ("VIDAS: %d", Vidas); //muestra las vidas
         Sleep(400);
-
-        system("cls");
 
         //Mover la rana
         if ((GetAsyncKeyState(VK_UP)& 1) || (GetAsyncKeyState(0x57)& 1)) //Arriba
@@ -105,7 +134,7 @@ void ultra() {
             if (x>0)
             {x--;}
             si = 30; //"la rana" se mueve hacia arriba (va a ser una flecha en  direccion en la que esta mirando "la rana")
-            puntuacion=+10; //cuando avanza suma 10 puntos
+            puntuacion=puntuacion+10; //cuando avanza suma 10 puntos
         }
 
         if ((GetAsyncKeyState(VK_DOWN) & 1) || (GetAsyncKeyState(0x53) & 1)) //Abajo
@@ -113,7 +142,7 @@ void ultra() {
             if (x<12)
             {x++;}
             si = 31; //"la rana" se mueve hacia abajo
-            puntuacion=-10; //cuando retrocede le resta 10 puntos
+            puntuacion=puntuacion-10; //cuando retrocede le resta 10 puntos
         }
 
         if ((GetAsyncKeyState(VK_LEFT)& 1) || (GetAsyncKeyState(0x41)& 1)) //Izquierda
@@ -129,29 +158,16 @@ void ultra() {
             {y++;}
             si = 16; //"la rana" se mueve hacia la izquierda
         }
+        
+        if(!(matriz[x][y] == 176 || matriz[x][y] == 175)) system("cls"); //si no perdiste actualiza la pantalla
 
-		/*
-        //muerte de la rana/colisiones
-        if ((matriz[x][y]==175 || matriz[x][y]==174))
-        {
-            vida--;
-            x=12, y=7;
-        }
-         //si te quedas sin vidas el juego se cierra y volves al menu
-		if(matriz[x][y]==sf2[i])
-		{
-		x=12, y=7;
-		}
-		*/
-		
 		if (x==0) //cuando llega a la meta le suma mil puntos "por ganar" y lo devuelve al inicio
 		{
-			puntuacion=+1000;
+			puntuacion=puntuacion+1000;
 			x=12, y=7;
 		}
        
-       
-        pos6++;
+        pos6++; //mueve las lineas
         pos7--;
         pos8++;
         pos9--;
