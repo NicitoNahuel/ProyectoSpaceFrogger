@@ -1,1 +1,41 @@
+-Bienvenido al manual de usuario de SPACE FROGGER-
 
+Objetivo del juego: 
+    El objetivo general del videojuego es llegar a la linea de meta que se encuentra en la parte superior del mapa. 
+    Para esto el jugador devera mover a la rana a travez de las diferentes filas mientras evita los diferentes peligros.
+
+
+Obstaculos: 
+    Mientras juega, el jugador se encontrara con que el mapa se divide en tres sectores: 
+    El primer sector esta constituido por una avalancha de naves que aplastaran a la rana si interceptan con ella, por
+    esto el jugador debera saltar a travez del espacio evitandolas.
+    En el segundo sector la fuerza gravitacional ya no afecta a la rana, es por esto que el jugador debera saltar de 
+    meteorito en meteorito para no caer al vacio eterno del espacio.
+    Finalmente al inicio y en el medio del mapa, el jugador encontrara bases espaciales o zonas seguras en las cuales 
+    podra moverse libremente sin morir a la espera de realizar su siguiente movimiento.
+
+
+Como jugar: 
+    Para moverte utiliza las flechas direccionales del teclado. Esto generara que la rana se mueva en la direccion
+    correspondiente a la direccion que apretaste! Ten en cuenta que no puedes moverte hacia las paredes, asi que 
+    cualquier movimiento que realizes el cual sea hacia una pared resultara en la rana no moviendose.
+
+
+Vidas: 
+    Las vidas son la cantidad de errores que puede cometer el usuario mientras intenta alcanzar la meta, si el jugador
+    es golpeado por una nave o falla en saltar a un meteorito, este perdera una vida. Si el jugador alcanza la meta 
+    su numero de vidas no se vera afectado y podra seguir intentando tantas veces pueda.
+
+
+Power Ups:
+    Esparcidos por el mapa se podran encontrar una serie de Power Ups los cuales al ser tocados le brindan ventajas
+    criticas al jugador en su objetivo de llegar a la meta. 
+    Estas ventajas son: 
+        VIDA EXTRA: El jugador recibe una vida extra.
+        REALENTIZADOR: El ritmo del juego, siendo la velocidad de los troncos y los meteoritos, disminuira permitiendole
+        al jugador tomarse un mayor tiempo para pensar entre sus movimientos y dandole un mayor margen de error.
+
+
+Puntuacion: 
+    El numero que se encuentra debajo del tablero es el puntaje! El puntaje se incrementara cada vez 
+    que llegues a la meta o avanzas
