@@ -2,13 +2,13 @@
 
 Objetivo del juego: 
     El objetivo general del videojuego es llegar a la linea de meta que se encuentra en la parte superior del mapa. 
-    Para esto el jugador devera mover a la rana a travez de las diferentes filas mientras evita los diferentes peligros.
+    Para esto el jugador debera mover a la rana a traves de las diferentes filas mientras evita los diferentes peligros.
 
 
 Obstaculos: 
     Mientras juega, el jugador se encontrara con que el mapa se divide en tres sectores: 
     El primer sector esta constituido por una avalancha de naves que aplastaran a la rana si interceptan con ella, por
-    esto el jugador debera saltar a travez del espacio evitandolas.
+    esto el jugador debera saltar a traves del espacio evitandolas.
     En el segundo sector la fuerza gravitacional ya no afecta a la rana, es por esto que el jugador debera saltar de 
     meteorito en meteorito para no caer al vacio eterno del espacio.
     Finalmente al inicio y en el medio del mapa, el jugador encontrara bases espaciales o zonas seguras en las cuales 
@@ -18,7 +18,7 @@ Obstaculos:
 Como jugar: 
     Para moverte utiliza las flechas direccionales del teclado. Esto generara que la rana se mueva en la direccion
     correspondiente a la direccion que apretaste! Ten en cuenta que no puedes moverte hacia las paredes, asi que 
-    cualquier movimiento que realizes el cual sea hacia una pared resultara en la rana no moviendose.
+    cualquier movimiento que realices el cual sea hacia una pared resultara en la rana no moviendose.
 
 
 Vidas: 
@@ -28,5 +28,6 @@ Vidas:
 
 
 Puntuacion: 
-    El numero que se encuentra debajo del tablero es el puntaje! El puntaje se incrementara cada vez 
-    que llegues a la meta o avanzas
+    El numero que se encuentra debajo del tablero es el puntaje! El puntaje se incrementara cada vez que llegues a la
+    meta en 1000 puntos y cada vez que te muevas hacia adelante en 10 puntos ¡Pero ten cuidado! Ya que caminar hacia 
+    atras tambien restara 10 puntos.
