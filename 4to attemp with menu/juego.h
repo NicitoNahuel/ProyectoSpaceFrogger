@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <unistd.h>
 #include "mapita.h"
-
+#include "Temporizador.h"
 
 void actualizarJuego(){
         ultra();
@@ -12,9 +12,7 @@ void actualizarJuego(){
 }
 
 int juegar() {
-    while (1) {
         actualizarJuego();
-    }
 
     return 0;
 }
