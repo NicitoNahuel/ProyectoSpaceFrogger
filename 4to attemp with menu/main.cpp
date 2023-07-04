@@ -36,7 +36,6 @@ int main() {
             	system ("CLS");
             	juegar();
                 break;
-                return 0;
                 
             case 2: //muestra los controles
   				//abre el archivo de texto
