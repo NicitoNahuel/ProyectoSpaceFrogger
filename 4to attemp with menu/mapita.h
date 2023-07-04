@@ -7,14 +7,14 @@
 #include <iostream>
 #define color SetConsoleTextAttribute
 using namespace std;
-
+int sleeping=500;
 int matriz[13][15], posRana[13][15];
 int i, j, p, q, n;
 int x, y;
 int si = 30;
-int Vidas, meta, flag=0, num1;
+int num , Vidas, meta, powerups, aux;
 int puntuacion=0;
-bool partidaTerminada;
+bool partidaTerminada, flag=false;
 // Meteoritos
 int linea1[15] = {254, 254, 254, 176, 176, 176, 254, 254, 254, 176, 176, 254, 254, 176, 176}; //176= agua / 254 = tronco
 int linea2[15] = {254, 254, 176, 176, 176, 176, 254, 254, 176, 176, 176, 254, 254, 176, 176};
@@ -34,6 +34,13 @@ int sf1[15] = {219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 
 // Meta
 int sf2[15] = {219, 219, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 219, 219}; //223= meta
 
+void limpiarPantalla (int x, int y){
+	COORD inicio;
+	inicio.X=x;
+	inicio.Y=y;
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), inicio);
+}
+
 void ultra() {
 	srand(time(NULL));
 	partidaTerminada=false;
@@ -50,18 +57,13 @@ void ultra() {
     int pos9 = 0;
     int pos10 = 0;
    
-	/*num1=rand()%15; //Genera numero aleatorio para el power up de vidas.
-	for(i=0;i<15;i++)
-	{
-		sf1[num1] = 04;		
-	}*/
-	
+
 	while (partidaTerminada == false)
 		{
 		
-		if(matriz[x][y] == 176 || matriz[x][y] == 175)
+		if(matriz[x][y] == 176 || matriz[x][y] == 175 || matriz[x][y] == 174 )
 		{
-        	Sleep(500);
+        	Sleep(sleeping);
         	Vidas=Vidas-1;
         	x=12; y=7;
         	//sf1[num1] = 219;
@@ -70,12 +72,12 @@ void ultra() {
 			partidaTerminada=true;
 			system("CLS");
 			printf("\n GAME OVER\n Tu puntuacion final es de: %d", puntuacion);
-        	sleep(2.5);
-        	system("CLS");
-        	break;
+        	sleep(2);
+        	limpiarPantalla(0, 0);
+        	exit(0);
 			}
 		}
-		system("CLS");
+		limpiarPantalla(0, 0);
 		
         // Copiar los vectores a la matriz
         for (i = 0; i < 15; i++) {
@@ -118,7 +120,7 @@ void ultra() {
                 }
                 
                 if(i == x && j == y){ 
-                	if(matriz[x][y] == 176 || matriz[x][y] == 175){
+                	if(matriz[x][y] == 174|| matriz[x][y] == 176 || matriz[x][y] == 175){
                 		color(lol, 12);
 					}else{
 						color(lol, 6);
@@ -132,9 +134,10 @@ void ultra() {
             printf("\n");
         }
 		
-		printf ("PUNTUACION: %d \n", puntuacion); //muestra la puntuacion debajo del mapa
-		printf ("VIDAS: %d", Vidas); //muestra las vidas
-        Sleep(400);
+		printf ("\n PUNTUACION: %d ", puntuacion); //muestra la puntuacion debajo del mapa
+		printf ("\n VIDAS: %d", Vidas); //muestra las vidas
+        
+		Sleep(sleeping);
 
         //Mover la rana
         if ((GetAsyncKeyState(VK_UP)& 1) || (GetAsyncKeyState(0x57)& 1)) //Arriba
@@ -167,20 +170,33 @@ void ultra() {
             si = 16; //"la rana" se mueve hacia la izquierda
         }
         
-        if(!(matriz[x][y] == 176 || matriz[x][y] == 175)) system("cls"); //si no perdiste actualiza la pantalla
+        if(!(matriz[x][y] == 176 || matriz[x][y] == 175 || matriz[x][y] == 174)) 
+		{limpiarPantalla(0, 0);} //si no perdiste actualiza la pantalla
 
 		if (x==0) //cuando llega a la meta le suma mil puntos "por ganar" y lo devuelve al inicio
 		{
 			puntuacion=puntuacion+1000;
 			x=12, y=7;
 		}
-		
-		/*if(x == 4 && y== num1)
+		/*
+		num=rand()%30; //posibilidad de que aprezca un power up
+		if (num==15 && flag==false)
 		{
-			Vidas=Vidas+1;
-			sf1[num1] = 219;
-		}*/	
+		generar_powerup(i, j, powerups);
+		while (matriz[i][j] == 176 || matriz[i][j] == 175 || matriz[i][j] == 174)
+		{generar_powerup(i, j, powerups);}
+		aux=matriz[i][j]; //guarda lo que habia antes del powerup
+		matriz[i][j]=245; //genera el powerup		
+		flag=true; //no genera mas
+		}
 		
+		if (matriz[x][y]==245)
+		{
+			Vidas=Vidas+1; //cuando lo agarra le suma una vida
+			matriz[i][j]=aux; //el piso vuelve a ser lo que era
+			flag=false; //se puede volver a generar
+		}
+		*/
         pos6++; //mueve las naves
         pos7--;
         pos8++;
