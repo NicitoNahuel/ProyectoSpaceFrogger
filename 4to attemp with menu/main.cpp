@@ -29,6 +29,10 @@ int main() {
         {
             opcion=3;
         }
+		else if (opcion=='4')
+		{
+			opcion=4;
+		}
         
         
         switch (opcion) { //ejecuta la opcion
@@ -56,7 +60,11 @@ int main() {
             case 3: //cierra el juego
                 printf("Saliendo...\n");
                 exit(0);
-                
+               
+			case 4:
+				printf ("agradecimientos especiales a Vallesteros y Oliveira");
+				break;
+
             default: 
                 printf("Opción inválida. Por favor, ingrese una opción válida.\n");
                 break;
