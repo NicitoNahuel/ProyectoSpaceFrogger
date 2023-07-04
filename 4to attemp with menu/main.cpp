@@ -63,10 +63,11 @@ int main() {
                
 			case 4:
 				printf ("agradecimientos especiales a Vallesteros y Oliveira");
+				sleep (2);
 				break;
 
             default: 
-                printf("Opción inválida. Por favor, ingrese una opción válida.\n");
+                 printf("Opcion invalida, porfavor ingresar otra.\n");
                 break;
         }
 }
