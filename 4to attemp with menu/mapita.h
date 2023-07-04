@@ -39,6 +39,7 @@ void ultra() {
 	partidaTerminada=false;
 	x = 12; y = 7;
 	Vidas=3;
+	puntuacion=0;
 		
     HANDLE lol;
     lol = GetStdHandle(STD_OUTPUT_HANDLE);
