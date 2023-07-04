@@ -27,15 +27,6 @@ Vidas:
     su numero de vidas no se vera afectado y podra seguir intentando tantas veces pueda.
 
 
-Power Ups:
-    Esparcidos por el mapa se podran encontrar una serie de Power Ups los cuales al ser tocados le brindan ventajas
-    criticas al jugador en su objetivo de llegar a la meta. 
-    Estas ventajas son: 
-        VIDA EXTRA: El jugador recibe una vida extra.
-        REALENTIZADOR: El ritmo del juego, siendo la velocidad de los troncos y los meteoritos, disminuira permitiendole
-        al jugador tomarse un mayor tiempo para pensar entre sus movimientos y dandole un mayor margen de error.
-
-
 Puntuacion: 
     El numero que se encuentra debajo del tablero es el puntaje! El puntaje se incrementara cada vez 
     que llegues a la meta o avanzas
