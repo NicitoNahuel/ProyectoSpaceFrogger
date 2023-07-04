@@ -4,13 +4,11 @@
 #include "mapita.h"
 
 
-void actualizarJuego() {
-    while (1){
+void actualizarJuego(){
         ultra();
         // Limpiar pantalla
         sleep(0.4);
         system("CLS");
-    }
 }
 
 int juegar() {
