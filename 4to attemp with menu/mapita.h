@@ -12,8 +12,7 @@ int matriz[13][15], posRana[13][15];
 int i, j, p, q, n;
 int x, y;
 int si = 30;
-int Vidas;
-int meta;
+int Vidas, meta, flag=0, num1;
 int puntuacion=0;
 bool partidaTerminada;
 // Meteoritos
@@ -36,6 +35,7 @@ int sf1[15] = {219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 219, 
 int sf2[15] = {219, 219, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 223, 219, 219}; //223= meta
 
 void ultra() {
+	srand(time(NULL));
 	partidaTerminada=false;
 	x = 12; y = 7;
 	Vidas=3;
@@ -50,14 +50,21 @@ void ultra() {
     int pos9 = 0;
     int pos10 = 0;
    
+	/*num1=rand()%15; //Genera numero aleatorio para el power up de vidas.
+	for(i=0;i<15;i++)
+	{
+		sf1[num1] = 04;		
+	}*/
 	
 	while (partidaTerminada == false)
 		{
+		
 		if(matriz[x][y] == 176 || matriz[x][y] == 175)
 		{
         	Sleep(500);
         	Vidas=Vidas-1;
         	x=12; y=7;
+        	//sf1[num1] = 219;
         	if (Vidas==0)
         	{
 			partidaTerminada=true;
@@ -69,7 +76,7 @@ void ultra() {
 			}
 		}
 		system("CLS");
-
+		
         // Copiar los vectores a la matriz
         for (i = 0; i < 15; i++) {
             matriz[0][i] = sf2[i];
@@ -89,15 +96,15 @@ void ultra() {
        
         //Define la posicion de la rana
         posRana[x][y] = si;
-       
+       	
         // Imprimir la matriz
         for (i = 0; i < 13; i++) {
             for (j = 0; j < 15; j++) {
             	
                 if (matriz[i][j] == 254) {
-                    color(lol, 6);
+                    color(lol, 8);
                 } else if (matriz[i][j] == 176) {
-                    color(lol, 3);
+                    color(lol, 1);
                 } else if (matriz[i][j] == 178) {
                     color(lol, 15);
                 } else if (matriz[i][j] == 175) {
@@ -105,16 +112,16 @@ void ultra() {
                 } else if (matriz[i][j] == 174) {
                     color(lol, 5);
                 } else if (matriz[i][j] == 219) {
-                    color(lol, 2);
+                    color(lol, 3);
                 } else if (matriz[i][j] == 223) {
-                    color(lol, 2);
+                    color(lol, 3);
                 }
                 
                 if(i == x && j == y){ 
                 	if(matriz[x][y] == 176 || matriz[x][y] == 175){
                 		color(lol, 12);
 					}else{
-						color(lol, 10);
+						color(lol, 6);
 					}
                 	printf("%c", posRana[i][j]);
 				}else{
@@ -167,8 +174,14 @@ void ultra() {
 			puntuacion=puntuacion+1000;
 			x=12, y=7;
 		}
-       
-        pos6++; //mueve las lineas
+		
+		/*if(x == 4 && y== num1)
+		{
+			Vidas=Vidas+1;
+			sf1[num1] = 219;
+		}*/	
+		
+        pos6++; //mueve las naves
         pos7--;
         pos8++;
         pos9--;
