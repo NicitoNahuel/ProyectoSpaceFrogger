@@ -72,7 +72,7 @@ void ultra() {
 			partidaTerminada=true;
 			system("CLS");
 			printf("\n GAME OVER\n Tu puntuacion final es de: %d", puntuacion);
-        	sleep(1);
+        	sleep(2);
         	limpiarPantalla(0, 0);
         break;
 			}
