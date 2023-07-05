@@ -2,7 +2,6 @@
 #include <windows.h>
 #include <unistd.h>
 #include "mapita.h"
-#include "Temporizador.h"
 
 void actualizarJuego(){
         ultra();
