@@ -42,6 +42,7 @@ int main() {
                 break;
                 
             case 2: //muestra los controles
+            	system("CLS");
   				//abre el archivo de texto
   				int salir;
 				texto = fopen("texto.txt", "r");
